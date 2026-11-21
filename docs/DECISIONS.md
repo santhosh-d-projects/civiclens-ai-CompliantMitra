@@ -1,0 +1,8 @@
+# Decisions (per Master Prompt §0 — decide, record, continue)
+
+1. **2026-11-21 11:50 IST — Fresh Supabase project.** Created `complaint-sathi` (ref vhvgsvizhbpnfehuocnu, ap-south-1) instead of reusing cherish-ai (another app's data) or the inactive supabase-green-door. Schema applied once, cleanly, via the Management API.
+2. **2026-11-21 11:52 IST — API keys via dashboard.** The connected Supabase OAuth credential lacks the `api_gateway_keys_read` scope, so anon/service-role keys cannot be fetched by API. They will be entered by the user through a secure form and written to `.env.local` + Vercel env only — never chat, never git.
+3. **2026-11-21 11:52 IST — AI provider order.** Build the analyze endpoint fallback-first (keyword classifier incl. Kannada/Hindi terms, per §8.2) so every flow works with no AI key; Gemini activates automatically when GEMINI_API_KEY is set (AI_PROVIDER=gemini, model gemini-2.5-flash). Anthropic remains supported by the same switch.
+4. **2026-11-21 11:52 IST — Repo.** The team repo `santhosh-d-projects/civiclens-ai-CompliantMitra` (created by the team for this event) is the submission repo, superseding §12's "new private repo" — the event form asks for this repo link. Pushes go through the connected GitHub account with the user's approval.
+5. **2026-11-21 11:52 IST — Auth for demo.** Email OTP is the spec'd citizen login; for the demo, seed accounts use email+password so flows can be tested end-to-end without an SMTP round-trip. OTP remains enabled in Supabase Auth settings.
+6. **2026-11-21 11:52 IST — Prior CivicLens draft superseded.** The static prototype built earlier today stays in ~/workspace/civiclens as a fallback demo; Complaint Sathi is the product going forward.
