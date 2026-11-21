@@ -12,6 +12,7 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
   const [categoryId, setCategoryId] = useState<number | "">(""); const [severity, setSeverity] = useState("medium");
   const [deptId, setDeptId] = useState(""); const [deptOptions, setDeptOptions] = useState<any[]>([]);
   const [done, setDone] = useState<any>(null);
+  const [listening, setListening] = useState(false); const [vlang, setVlang] = useState("en-IN");
 
   async function uploadPhoto(file: File) {
     const r = await fetch("/api/uploads/sign", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ bucket: "complaint-photos", filename: file.name }) });
@@ -20,13 +21,30 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
     if (error) { setErr(error.message); return; }
     setPhotoPaths((p) => [...p, j.path]);
   }
-  async function analyze() {
+  async function analyze(text?: string) {
+    const desc = (text ?? description).trim();
     setBusy(true); setErr("");
-    const r = await fetch("/api/complaints/analyze", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ description, ward_id: wardId }) });
+    const r = await fetch("/api/complaints/analyze", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ description: desc, ward_id: wardId }) });
     const j = await r.json(); setBusy(false);
     if (!r.ok) { setErr(j.error?.message ?? "Analysis failed"); return; }
     setAnalysis(j); setCategoryId(j.category_id ?? ""); setSeverity(j.severity); setDeptOptions(j.departments); setDeptId(j.default_department_id ?? "");
     setStep(2);
+  }
+  function startVoice() {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SR) { setErr("Voice input is not supported in this browser — please use Google Chrome, or type your complaint instead."); return; }
+    const rec = new SR();
+    rec.lang = vlang; rec.interimResults = true; rec.continuous = false;
+    setErr(""); setListening(true);
+    rec.onresult = (e: any) => {
+      let finalText = ""; let interim = "";
+      for (let i = 0; i < e.results.length; i++) { const r = e.results[i]; if (r.isFinal) finalText += r[0].transcript; else interim += r[0].transcript; }
+      setDescription(finalText || interim);
+      if (finalText.trim().length >= 8) { setListening(false); if (wardId) { analyze(finalText.trim()); } }
+    };
+    rec.onerror = (e: any) => { setListening(false); if (e.error === "not-allowed") setErr("Microphone permission was blocked — allow the mic in your browser and try again, or type instead."); };
+    rec.onend = () => setListening(false);
+    try { rec.start(); } catch { setListening(false); }
   }
   async function changeCategory(id: number) {
     setCategoryId(id);
@@ -61,7 +79,14 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
       {step === 1 && (
         <div className="space-y-4">
           <div><label className="text-sm font-medium">What is the problem? *</label>
-            <textarea data-testid="report-description" className={inputCls} rows={4} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="e.g. Main water pipe burst near the bus stop, road is flooded. Write in any language." /></div>
+            <textarea data-testid="report-description" className={inputCls} rows={4} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="e.g. Main water pipe burst near the bus stop, road is flooded. Write in any language — or tap the mic and speak." /></div>
+          <div className="flex flex-wrap items-center gap-2 mt-3">
+            <button type="button" data-testid="report-voice" onClick={startVoice} disabled={listening} className={`px-4 py-2.5 rounded-xl font-semibold text-white shadow transition ${listening ? "bg-red-500 animate-pulse" : "bg-gradient-to-r from-emerald-600 to-green-500 hover:from-emerald-500 hover:to-lime-500"}`}>{listening ? "🔴 Listening… speak now" : "🎤 Speak your complaint"}</button>
+            <select aria-label="Voice language" className="border border-emerald-200 rounded-xl px-3 py-2.5 bg-white/80 text-sm" value={vlang} onChange={(e) => setVlang(e.target.value)}>
+              <option value="en-IN">English</option><option value="kn-IN">ಕನ್ನಡ (Kannada)</option><option value="hi-IN">हिन्दी (Hindi)</option>
+            </select>
+            <span className="text-xs text-slate-500">Speak in your language — we fill the form and the AI fills the rest. Pick your ward first, then speak.</span>
+          </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div><label className="text-sm font-medium">Ward *</label>
               <select data-testid="report-ward" className={inputCls} value={wardId} onChange={(e) => setWardId(Number(e.target.value))}><option value="">Choose your ward</option>{wards.map((w) => <option key={w.id} value={w.id}>{w.name} ({w.zone})</option>)}</select></div>
@@ -71,7 +96,7 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
           <div><label className="text-sm font-medium">Photos (optional, up to 10MB each)</label>
             <input type="file" accept="image/*" multiple className="block mt-1 text-sm" onChange={(e) => { [...(e.target.files ?? [])].forEach(uploadPhoto); }} />
             {photoPaths.length > 0 && <p className="text-xs text-emerald-700 mt-1">📷 {photoPaths.length} photo(s) attached</p>}</div>
-          <button data-testid="report-analyze" className={`${btnPrimary} w-full`} disabled={busy || description.trim().length < 8 || !wardId} onClick={analyze}>{busy ? "Analysing…" : "🤖 Analyse with AI"}</button>
+          <button data-testid="report-analyze" className={`${btnPrimary} w-full`} disabled={busy || description.trim().length < 8 || !wardId} onClick={() => analyze()}>{busy ? "Analysing…" : "🤖 Analyse with AI"}</button>
         </div>
       )}
       {step === 2 && analysis && (

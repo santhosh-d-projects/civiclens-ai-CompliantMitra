@@ -1,0 +1,131 @@
+PROMPT TO PRODUCT — FINAL SUBMISSION FORM ANSWERS
+Team CompliantMitra · Complaint Sathi
+Form window: 2:00 PM – 2:30 PM IST, Sat 2026-11-21 (deadline 2:30 PM SHARP)
+Copy-paste each block into the matching form field. Anything marked [FILL] only the team can supply.
+
+=====================================================================
+SECTION 1 — TEAM DETAILS
+=====================================================================
+
+Team Name:
+CompliantMitra
+
+College Name:
+[FILL]
+
+Team Leader Name:
+[FILL]
+
+Team Leader Phone Number:
+[FILL]
+
+Team Leader Email ID:
+[FILL]
+
+--- Team Member 1 ---
+Name: Santhosh Dubari
+Email ID: [FILL]
+GitHub Username: santhosh-d-projects
+
+--- Team Member 2 ---
+Name: Vaishnavi
+Email ID: [FILL]
+GitHub Username: [FILL]
+
+=====================================================================
+SECTION 2 — PROJECT DETAILS
+=====================================================================
+
+Project Name:
+Complaint Sathi — AI Triage for Citizen Complaints (CivicLens)
+
+Project Description (2–3 lines):
+Complaint Sathi turns an unstructured citizen complaint — free text in English, Hindi, Kannada or Hinglish, with photos — into a structured, prioritised ticket: AI suggests the category, a severity with a plain-language reason, and the right department, and the citizen confirms before anything is filed. Officers work a severity-sorted queue and resolve complaints with a note and an after-work photo the citizen can see, while every approval and status change is written to a tamper-evident, hash-chained audit log.
+
+Successfully Implemented Features:
+- Multilingual complaint submission (English, Kannada, Hindi and Hinglish).
+- AI-powered complaint categorisation and severity detection.
+- Explainable severity assessment with a plain-language reason.
+- AI-ranked department recommendations based on ward and category.
+- Duplicate complaint prevention.
+- Three role-based portals: Citizen, Department Officer and Admin.
+- Severity-prioritised complaint dashboards.
+- Verified department registration and admin-controlled activation.
+- Complaint status tracking with citizen-visible updates.
+- Mandatory resolution notes and after-work photo proof.
+- Tamper-evident, digitally signed audit trails.
+- Database-enforced access control and business rules.
+- Automatic reassignment of open complaints when a department is suspended.
+- Admin analytics for complaints, departments and Bengaluru wards.
+- AI fallback classification when the AI service is unavailable.
+- Audit verification and exportable signed evidence.
+
+Additional Features Developed:
+- In-app notifications for citizens and officers on every status change.
+- Voice-based complaint registration: tap the mic and speak in English, Kannada or Hindi — the speech fills the complaint form and the AI auto-fills category, severity and department for confirmation.
+- Optional Firebase email verification on registration (add-on; the main email + password login flow is untouched).
+
+=====================================================================
+SECTION 3 — PROJECT SUBMISSION & LINKS
+=====================================================================
+
+Public GitHub Repository Link:
+https://github.com/santhosh-d-projects/civiclens-ai-CompliantMitra
+
+Live Website / Deployment Link:
+https://complaint-sathi.vercel.app
+
+Demo Video Link:
+[FILL — team records the 2–3 minute demo and pastes the Drive/YouTube link here; set sharing to "Anyone with the link – Viewer"]
+
+Presentation Slides (PDF, 5 slides):
+https://muse.ai/files/1348290121710743/2100420063933983/f2a5dp7yobeluig0w48fxoe6/Complaint-Sathi-Slides.pdf
+(Local file: submission/Complaint-Sathi-Slides.pdf — upload this file directly if the form asks for a file upload instead of a link. Link expires 2026-11-23.)
+
+Project Write-up (PDF, 2 pages):
+https://muse.ai/files/1348290121710743/1850764369284932/7tq5r3htv567qokbksyk01i3/Complaint-Sathi-Writeup.pdf
+(Local file: submission/Complaint-Sathi-Writeup.pdf. Link expires 2026-11-23.)
+
+Demo logins (if the form or judges ask):
+Citizen: priya@demo.complaintsathi.test / Demo@12345
+Officer: officer.water@demo.complaintsathi.test / Demo@12345
+Admin: admin@complaintsathi.test / Admin@123
+
+=====================================================================
+SECTION 4 — AI USAGE & CHAT HISTORY
+=====================================================================
+
+AI Tools Used:
+- Claude (Muse Spark) via Muse — primary AI build partner: product design, code generation, database schema, debugging, verification and documentation, driven by the team's written master prompt
+- Google Stitch — UI mock-ups used as visual reference only
+- (AI inside the product: provider-switchable Gemini/Anthropic triage layer with a built-in multilingual fallback classifier; the shipped demo runs on the fallback classifier)
+
+AI Chat Share Links:
+[FILL — paste the Muse chat share link(s) from each team member's account; the chats must NOT be deleted or edited]
+
+AI Chat History (PDF exports / timestamped screenshots):
+[FILL — attach/export from the team members' AI accounts if the form asks for files]
+
+Prompt Log (PDF — 17 key prompts with timestamps, purpose and outcome):
+https://muse.ai/files/1348290121710743/1835224291041323/bgh8dg2f7uxal4tni0rvq20z/Complaint-Sathi-Prompt-Log.pdf
+(Local file: submission/Complaint-Sathi-Prompt-Log.pdf. Link expires 2026-11-23.)
+
+=====================================================================
+SECTION 5 — DECLARATION & CONFIRMATION
+=====================================================================
+
+Tick/agree to all declarations in the form:
+- Project developed within the 4-hour event window — TRUE (all GitHub commits and the 17-entry timestamped prompt log are from 2026-11-21, 10:30 AM onwards)
+- AI chat history is complete and authentic — confirm once the share links above are pasted
+- All submitted links are accessible — verified 2026-11-21: live site HTTP 200, GitHub repo public (HTTP 200 anonymously), all three PDF links live
+- Jury's decision is final — agree
+
+=====================================================================
+STILL TO FILL BY THE TEAM BEFORE 2:30 PM
+=====================================================================
+1. College Name
+2. Team Leader name, phone number, email ID
+3. Santhosh Dubari's email ID
+4. Vaishnavi's email ID and GitHub username
+5. Demo video link (record 2–3 min; Drive sharing = Anyone with the link – Viewer)
+6. AI chat share link(s) from team members' accounts (+ PDF exports/screenshots if the form asks for files)

@@ -48,7 +48,7 @@ export default async function Home() {
         <div className="glass lift rounded-2xl p-6">
           <h3 className="font-bold text-lg mb-3">How it works</h3>
           <ol className="space-y-3 text-[15px]">
-            <li>✍️ <b>Describe</b> — free text in English, Kannada, Hindi or any language, with photos.</li>
+            <li>✍️ <b>Describe or speak</b> — type or tap the mic and speak in English, Kannada or Hindi; photos optional.</li>
             <li>🤖 <b>AI suggests</b> — category, severity with a plain reason, and the departments that can take it.</li>
             <li>✅ <b>You confirm</b> — change the department if you disagree, then submit.</li>
             <li>📍 <b>Track</b> — follow the ticket timeline, the officer's notes and the after-work photo until it is resolved.</li>
