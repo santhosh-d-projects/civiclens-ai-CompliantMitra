@@ -38,8 +38,8 @@ export default function Login() {
       <div className="glass rounded-2xl p-8 w-full max-w-md">
         <div className="text-center mb-6"><div className="text-5xl">🛡️</div><h1 className="text-2xl font-bold mt-2">Complaint Sathi</h1><p className="text-slate-500 text-sm">Sign in to continue</p></div>
         <div className="flex gap-2 mb-5">
-          <button onClick={() => setMode("password")} className={`flex-1 py-2 rounded-lg font-medium ${mode === "password" ? "bg-teal-800 text-white" : "bg-slate-100"}`}>Email + password</button>
-          <button onClick={() => setMode("otp")} className={`flex-1 py-2 rounded-lg font-medium ${mode === "otp" ? "bg-teal-800 text-white" : "bg-slate-100"}`}>Email OTP (citizens)</button>
+          <button onClick={() => setMode("password")} className={`flex-1 py-2 rounded-lg font-medium ${mode === "password" ? "bg-emerald-800 text-white" : "bg-slate-100"}`}>Email + password</button>
+          <button onClick={() => setMode("otp")} className={`flex-1 py-2 rounded-lg font-medium ${mode === "otp" ? "bg-emerald-800 text-white" : "bg-slate-100"}`}>Email OTP (citizens)</button>
         </div>
         {mode === "password" ? (
           <form onSubmit={passwordLogin} className="space-y-3">
@@ -59,7 +59,7 @@ export default function Login() {
           </form>
         )}
         {msg && <p className="text-sm text-center mt-4 text-slate-600">{msg}</p>}
-        <p className="text-sm text-slate-500 text-center mt-6">New citizen? <a className="text-teal-800 font-medium underline" href="/register">Create an account</a></p>
+        <p className="text-sm text-slate-500 text-center mt-6">New citizen? <a className="text-emerald-800 font-medium underline" href="/register">Create an account</a></p>
         <p className="text-xs text-slate-400 text-center mt-6">Officers sign in only after the Admin approves and activates their department.</p>
       </div>
     </main>

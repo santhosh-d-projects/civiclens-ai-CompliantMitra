@@ -4,7 +4,7 @@ function Bars({ title, data }: { title: string; data: Record<string, number> }) 
   const entries = Object.entries(data).sort((a, b) => b[1] - a[1]); const max = Math.max(1, ...entries.map(([, v]) => v));
   return <div className="glass rounded-2xl p-6"><h3 className="font-bold mb-4">{title}</h3>
     {entries.length === 0 ? <p className="text-sm text-slate-400">No data yet.</p> : entries.map(([k, v]) => (
-      <div key={k} className="flex items-center gap-3 mb-2 text-sm"><span className="w-44 truncate">{k}</span><div className="flex-1 h-4 bg-slate-100 rounded-full"><div className="h-4 bg-teal-700 rounded-full" style={{ width: `${(v / max) * 100}%` }} /></div><b>{v}</b></div>))}</div>;
+      <div key={k} className="flex items-center gap-3 mb-2 text-sm"><span className="w-44 truncate">{k}</span><div className="flex-1 h-4 bg-slate-100 rounded-full"><div className="h-4 bg-emerald-700 rounded-full" style={{ width: `${(v / max) * 100}%` }} /></div><b>{v}</b></div>))}</div>;
 }
 export default function Analytics() {
   const [d, setD] = useState<any>(null);

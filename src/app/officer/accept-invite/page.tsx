@@ -12,7 +12,7 @@ function Form() {
     if (!r.ok) { setMsg(j.error?.message ?? "Could not accept the invite"); return; }
     setDone(true);
   }
-  if (done) return <div className="text-center"><div className="text-5xl mb-3">🎉</div><h2 className="text-xl font-bold">Password set</h2><p className="text-slate-500 mt-2">Your officer account is ready. <a className="text-teal-800 font-semibold" href="/login">Sign in →</a></p></div>;
+  if (done) return <div className="text-center"><div className="text-5xl mb-3">🎉</div><h2 className="text-xl font-bold">Password set</h2><p className="text-slate-500 mt-2">Your officer account is ready. <a className="text-emerald-800 font-semibold" href="/login">Sign in →</a></p></div>;
   return (
     <form onSubmit={submit} className="space-y-3">
       <h2 className="text-xl font-bold text-center">Set up your officer account</h2>

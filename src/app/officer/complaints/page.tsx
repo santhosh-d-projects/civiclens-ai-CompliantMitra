@@ -11,7 +11,7 @@ export default async function OfficerComplaints({ searchParams }: { searchParams
         <input name="q" defaultValue={sp.q ?? ""} placeholder="Search title or ticket no" className="border rounded-xl p-2.5 text-sm flex-1 min-w-[180px]" />
         <select name="status" defaultValue={sp.status ?? ""} className="border rounded-xl p-2.5 text-sm"><option value="">All statuses</option>{["submitted", "received", "in_progress", "resolved", "closed", "reopened"].map((s) => <option key={s} value={s}>{s.replace("_", " ")}</option>)}</select>
         <select name="severity" defaultValue={sp.severity ?? ""} className="border rounded-xl p-2.5 text-sm"><option value="">All severities</option>{["critical", "high", "medium", "low"].map((s) => <option key={s} value={s}>{s}</option>)}</select>
-        <button className="bg-teal-800 text-white px-4 py-2 rounded-xl text-sm font-medium">Filter</button>
+        <button className="bg-emerald-800 text-white px-4 py-2 rounded-xl text-sm font-medium">Filter</button>
       </form>
       <OfficerQueue departmentId={dept.id} searchParams={sp} />
     </div>

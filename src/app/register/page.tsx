@@ -38,7 +38,7 @@ export default function Register() {
           <input data-testid="register-password" className={inputCls} type="password" required placeholder="Password (min 8 characters)" value={password} onChange={(e) => setPassword(e.target.value)} />
           <input data-testid="register-confirm" className={inputCls} type="password" required placeholder="Confirm password" value={confirm} onChange={(e) => setConfirm(e.target.value)} />
           {fb && (
-            <label className="flex items-start gap-2 text-sm text-slate-600 bg-teal-50 border border-teal-100 rounded-lg p-3">
+            <label className="flex items-start gap-2 text-sm text-slate-600 bg-emerald-50 border border-emerald-100 rounded-lg p-3">
               <input data-testid="register-firebase" type="checkbox" className="mt-0.5" checked={useFirebase} onChange={(e) => setUseFirebase(e.target.checked)} />
               <span><b>Optional:</b> also verify my email with Firebase — Google will email you a verification link (free, no phone number needed).</span>
             </label>
@@ -46,8 +46,8 @@ export default function Register() {
           <button data-testid="register-submit" className={`${btnPrimary} w-full`} disabled={busy}>{busy ? "Creating account…" : "Create account"}</button>
         </form>
         {err && <p className="text-sm text-center mt-4 text-red-600">{err}</p>}
-        {msg && <p className="text-sm text-center mt-4 text-teal-800">{msg}</p>}
-        <p className="text-sm text-slate-500 text-center mt-6">Already registered? <a className="text-teal-800 font-medium underline" href="/login">Sign in</a></p>
+        {msg && <p className="text-sm text-center mt-4 text-emerald-800">{msg}</p>}
+        <p className="text-sm text-slate-500 text-center mt-6">Already registered? <a className="text-emerald-800 font-medium underline" href="/login">Sign in</a></p>
       </div>
     </main>
   );

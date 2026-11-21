@@ -31,14 +31,14 @@ export default async function ComplaintDetail({ params }: { params: Promise<{ id
           {c.resolution_note && <div className="sm:col-span-2"><dt className="text-slate-400">Resolution note</dt><dd className="font-medium">{c.resolution_note}</dd></div>}
         </dl>
         {photos.length > 0 && <div className="mt-5"><h4 className="text-sm font-semibold text-slate-500 mb-2">Photos you attached</h4><div className="flex gap-2 flex-wrap">{photos.map((u) => <img key={u} src={u} alt="Complaint photo" className="w-28 h-28 object-cover rounded-xl border" />)}</div></div>}
-        {resPhotos.length > 0 && <div className="mt-5"><h4 className="text-sm font-semibold text-teal-800 mb-2">✅ After-work photos from the department</h4><div className="flex gap-2 flex-wrap">{resPhotos.map((u) => <img key={u} src={u} alt="Resolution proof" className="w-28 h-28 object-cover rounded-xl border-2 border-emerald-200" />)}</div></div>}
+        {resPhotos.length > 0 && <div className="mt-5"><h4 className="text-sm font-semibold text-emerald-800 mb-2">✅ After-work photos from the department</h4><div className="flex gap-2 flex-wrap">{resPhotos.map((u) => <img key={u} src={u} alt="Resolution proof" className="w-28 h-28 object-cover rounded-xl border-2 border-emerald-200" />)}</div></div>}
         <div className="mt-6"><CitizenActions id={c.id} status={c.status} /></div>
       </div>
       <div className="glass rounded-2xl p-6">
         <h3 className="font-bold mb-4">📍 Progress timeline</h3>
-        <ol className="relative border-l-2 border-teal-100 ml-2 space-y-4">
+        <ol className="relative border-l-2 border-emerald-100 ml-2 space-y-4">
           {(events ?? []).map((e: any) => (
-            <li key={e.id} className="ml-4"><span className="absolute -left-[7px] w-3 h-3 bg-teal-700 rounded-full" style={{ position: "absolute" }} />
+            <li key={e.id} className="ml-4"><span className="absolute -left-[7px] w-3 h-3 bg-emerald-700 rounded-full" style={{ position: "absolute" }} />
               <p className="text-sm font-medium capitalize">{e.event.replace(/_/g, " ")}</p>
               <p className="text-xs text-slate-400">{new Date(e.created_at).toLocaleString("en-IN")}</p>
               {e.meta?.note && <p className="text-sm text-slate-600">{e.meta.note}</p>}
