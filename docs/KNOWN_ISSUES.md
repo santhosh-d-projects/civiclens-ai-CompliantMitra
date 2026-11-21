@@ -6,3 +6,4 @@
 - Officer resolution photo proof upload not wired (note is supported; photo_paths accepted by the API).
 - Analytics uses CSS bars instead of recharts.
 - Rate limiting on public/AI endpoints is not yet enforced (zod + honeypot are in place).
+- Firebase email verification is implemented but inactive until a Firebase project's web config is added to env (NEXT_PUBLIC_FIREBASE_*). Setup: console.firebase.google.com → create project (Spark) → Authentication → enable Email/Password → Project settings → add Web app → copy the 4 config values into Vercel env + .env.local → redeploy.

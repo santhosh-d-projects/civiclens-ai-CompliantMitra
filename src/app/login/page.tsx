@@ -59,6 +59,7 @@ export default function Login() {
           </form>
         )}
         {msg && <p className="text-sm text-center mt-4 text-slate-600">{msg}</p>}
+        <p className="text-sm text-slate-500 text-center mt-6">New citizen? <a className="text-teal-800 font-medium underline" href="/register">Create an account</a></p>
         <p className="text-xs text-slate-400 text-center mt-6">Officers sign in only after the Admin approves and activates their department.</p>
       </div>
     </main>

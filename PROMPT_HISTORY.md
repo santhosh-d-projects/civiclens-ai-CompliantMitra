@@ -36,3 +36,6 @@ HTTP smoke tests found PostgREST embed ambiguity (complaints has two FKs each to
 
 ## Entry 14 — 2026-11-21 ~12:35 IST — Agent (ship)
 Created Vercel project complaint-sathi, set 8 env vars, pushed the repo to GitHub (team repo civiclens-ai-CompliantMitra) for a git-linked production deployment.
+
+## Entry 15 — 2026-11-21 12:21 IST — User prompt (v2 master prompt + Firebase decision)
+User pasted the v2 master prompt (adds STEP 0: Firebase phone-OTP as P0) and asked whether it can be added without stopping current work. Her decision: change to Firebase EMAIL verification, as an OPTION only — new citizens register with email + password + confirm password; the decided email+password login flow must not be disturbed. Implemented exactly that: /register page (Supabase sign-up), env-gated Firebase verification checkbox in src/lib/firebase.ts, login flow untouched, decision recorded as D7.
