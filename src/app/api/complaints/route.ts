@@ -19,6 +19,10 @@ export async function POST(req: Request) {
   if (!parsed.success) return apiError("VALIDATION", parsed.error.issues[0].message, 422);
   const b = parsed.data;
   const admin = supabaseAdmin();
+  const norm = (x: string) => x.trim().replace(/\s+/g, " ").toLowerCase();
+  const { data: mine } = await admin.from("complaints").select("ticket_no,description").eq("citizen_id", r.profile.id);
+  const dup = (mine ?? []).find((c: any) => norm(c.description) === norm(b.description));
+  if (dup) return apiError("DUPLICATE_COMPLAINT", `You have already filed this exact complaint \u2014 ticket ${dup.ticket_no}. Duplicates are not registered again, so no new complaint ID was created.`, 409);
   const title = b.description.trim().slice(0, 80);
   const { data, error } = await admin.rpc("create_complaint", {
     p_citizen: r.profile.id, p_title: title, p_description: b.description, p_language: b.language ?? "en",

@@ -21,6 +21,11 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   const parsed = z.object({ status: z.enum(["received", "in_progress", "resolved", "closed"]), note: z.string().optional(), photo_paths: z.array(z.string()).optional() }).safeParse(await req.json().catch(() => null));
   if (!parsed.success) return apiError("VALIDATION", parsed.error.issues[0].message, 422);
   const admin = supabaseAdmin();
+  if (parsed.data.status === "resolved") {
+    let photos = parsed.data.photo_paths ?? [];
+    if (!photos.length) { const { data: ex } = await admin.from("complaints").select("resolution_photo_paths").eq("id", id).single(); photos = ex?.resolution_photo_paths ?? []; }
+    if (!photos.length) return apiError("RESOLUTION_PHOTO_REQUIRED", "Add at least one after-work photo to mark this resolved \u2014 the citizen sees it as proof of the work.", 422);
+  }
   const { data, error } = await admin.rpc("officer_update_complaint", { p_officer: r.profile.id, p_complaint: id, p_status: parsed.data.status, p_note: parsed.data.note ?? null, p_photos: parsed.data.photo_paths ?? null });
   if (error) return fromDbError(error);
   if (data?.citizen_id) {
