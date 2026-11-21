@@ -56,17 +56,17 @@ export default function DepartmentsAdmin() {
     <div className="relative">
       <div className="flex flex-wrap gap-2 mb-4">
         {[["pending", "⏳ Pending"], ["approved", "✅ Approved"], ["rejected", "❌ Rejected"], ["deactivated", "🔒 Deactivated"], ["all", "All"]].map(([k, l]) => (
-          <button key={k} data-testid={`dept-tab-${k}`} onClick={() => setTab(k)} className={`px-4 py-2 rounded-xl font-medium ${tab === k ? "bg-teal-800 text-white" : "bg-white shadow"}`}>{l}</button>))}
+          <button key={k} data-testid={`dept-tab-${k}`} onClick={() => setTab(k)} className={`px-4 py-2 rounded-xl font-medium ${tab === k ? "bg-emerald-800 text-white" : "bg-white shadow"}`}>{l}</button>))}
         {tab === "approved" && ["All", "Active", "Suspended"].map((c) => (
           <button key={c} onClick={() => setChip(c)} className={`px-3 py-2 rounded-full text-sm ${chip === c ? "bg-[#17324d] text-white" : "bg-slate-100"}`}>{c}</button>))}
-        <a href="/admin/departments/new" className="ml-auto bg-teal-800 text-white px-4 py-2 rounded-xl font-medium">+ Create department</a>
+        <a href="/admin/departments/new" className="ml-auto bg-emerald-800 text-white px-4 py-2 rounded-xl font-medium">+ Create department</a>
       </div>
       <div className="glass rounded-2xl overflow-x-auto">
         {rows.length === 0 ? <EmptyState icon="🏛️" title="No departments in this view" /> : (
           <table className="w-full text-sm min-w-[820px]">
             <thead><tr className="text-left text-slate-400 border-b"><th className="p-3">Department</th><th>Applicant</th><th>Service area</th><th>Contact</th><th>Submitted</th><th>Source</th><th>Status</th></tr></thead>
             <tbody>{rows.map((x) => (
-              <tr key={x.id} data-testid="dept-row" className="border-b last:border-0 hover:bg-teal-50 cursor-pointer" onClick={() => openDrawer(x.id)}>
+              <tr key={x.id} data-testid="dept-row" className="border-b last:border-0 hover:bg-emerald-50 cursor-pointer" onClick={() => openDrawer(x.id)}>
                 <td className="p-3 font-medium">{x.name}</td><td>{x.applicant_name ?? "—"}</td>
                 <td>{x.department_officers?.length ? `${x.department_officers.length} officer(s)` : "—"}</td>
                 <td>{x.official_email}<br /><span className="text-xs text-slate-400">{x.official_phone ?? ""}</span></td>
@@ -98,9 +98,9 @@ export default function DepartmentsAdmin() {
             {sel.documents.length === 0 && <p className="text-sm text-slate-400">No documents uploaded.</p>}
             {sel.documents.map((doc: any) => (
               <label key={doc.id} className="flex items-center gap-3 text-sm py-2 border-b last:border-0">
-                <input type="checkbox" data-testid="doc-verify" checked={!!doc.verified_at} onChange={(e) => verifyDoc(doc.id, e.target.checked)} className="w-5 h-5 accent-teal-800" />
+                <input type="checkbox" data-testid="doc-verify" checked={!!doc.verified_at} onChange={(e) => verifyDoc(doc.id, e.target.checked)} className="w-5 h-5 accent-emerald-800" />
                 <span className="flex-1">{doc.name} {doc.verified_at && <span className="text-emerald-700 text-xs">verified {new Date(doc.verified_at).toLocaleDateString("en-IN")}</span>}</span>
-                {doc.signed_url && <a className="text-teal-800 font-medium" href={doc.signed_url} target="_blank" rel="noreferrer">View</a>}
+                {doc.signed_url && <a className="text-emerald-800 font-medium" href={doc.signed_url} target="_blank" rel="noreferrer">View</a>}
               </label>))}
             <h4 className="font-bold mt-6 mb-2">🕘 History</h4>
             <ul className="text-sm space-y-1">{sel.history.map((h: any) => <li key={h.seq} className="text-slate-600">#{h.seq} {h.action.replace(/_/g, " ")} {h.old_status ? `${h.old_status} → ${h.new_status}` : ""} — {new Date(h.ts).toLocaleString("en-IN")}{h.reason ? ` — ${h.reason}` : ""}</li>)}</ul>

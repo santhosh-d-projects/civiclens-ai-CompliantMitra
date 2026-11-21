@@ -41,7 +41,7 @@ export default function AuditAdmin() {
           <table className="w-full text-sm min-w-[820px]">
             <thead><tr className="text-left text-slate-400 border-b"><th className="p-3">#</th><th>Time (UTC)</th><th>Action</th><th>Actor</th><th>Entity</th><th>Change</th><th>Signed</th></tr></thead>
             <tbody>{rows.map((a) => (
-              <tr key={a.seq} data-testid="audit-row" className="border-b last:border-0 hover:bg-teal-50 cursor-pointer" onClick={() => openForensic(a)}>
+              <tr key={a.seq} data-testid="audit-row" className="border-b last:border-0 hover:bg-emerald-50 cursor-pointer" onClick={() => openForensic(a)}>
                 <td className="p-3 font-mono text-xs">{a.seq}</td><td className="text-xs">{new Date(a.ts).toISOString().replace("T", " ").slice(0, 19)}Z</td>
                 <td className="font-medium">{a.action.replace(/_/g, " ")}</td><td>{a.actor_role ?? "system"}</td>
                 <td className="text-xs">{a.entity_type}</td><td className="text-xs">{a.old_status ? `${a.old_status} → ${a.new_status}` : a.new_status ?? "—"}</td>

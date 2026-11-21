@@ -47,7 +47,7 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
   if (done) return (
     <div className="glass rounded-2xl p-8 text-center">
       <div className="text-6xl mb-3">✅</div><h2 className="text-2xl font-bold">Complaint submitted</h2>
-      <p className="text-slate-500 mt-2">Your ticket number is <b className="text-teal-800 text-xl">{done.ticket_no}</b>. The department you confirmed has received it.</p>
+      <p className="text-slate-500 mt-2">Your ticket number is <b className="text-emerald-800 text-xl">{done.ticket_no}</b>. The department you confirmed has received it.</p>
       <Link href={`/citizen/complaints/${done.id}`} className={`${btnPrimary} inline-block mt-6`}>Track my complaint →</Link>
     </div>
   );
@@ -55,7 +55,7 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
     <div className="glass rounded-2xl p-6">
       <div className="flex gap-2 mb-6 text-sm font-medium">
         {["1 · Describe", "2 · AI suggests, you confirm", "3 · Submit"].map((s, i) => (
-          <span key={s} className={`px-3 py-1.5 rounded-full ${step === i + 1 ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-500"}`}>{s}</span>))}
+          <span key={s} className={`px-3 py-1.5 rounded-full ${step === i + 1 ? "bg-emerald-800 text-white" : "bg-slate-100 text-slate-500"}`}>{s}</span>))}
       </div>
       {err && <p className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-3 mb-4 text-sm">{err}</p>}
       {step === 1 && (
@@ -70,13 +70,13 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
           </div>
           <div><label className="text-sm font-medium">Photos (optional, up to 10MB each)</label>
             <input type="file" accept="image/*" multiple className="block mt-1 text-sm" onChange={(e) => { [...(e.target.files ?? [])].forEach(uploadPhoto); }} />
-            {photoPaths.length > 0 && <p className="text-xs text-teal-700 mt-1">📷 {photoPaths.length} photo(s) attached</p>}</div>
+            {photoPaths.length > 0 && <p className="text-xs text-emerald-700 mt-1">📷 {photoPaths.length} photo(s) attached</p>}</div>
           <button data-testid="report-analyze" className={`${btnPrimary} w-full`} disabled={busy || description.trim().length < 8 || !wardId} onClick={analyze}>{busy ? "Analysing…" : "🤖 Analyse with AI"}</button>
         </div>
       )}
       {step === 2 && analysis && (
         <div className="space-y-4">
-          <div className="bg-teal-50 border border-teal-100 rounded-xl p-4 text-sm">
+          <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-sm">
             <p>🤖 <b>AI analysis</b> ({analysis.source === "fallback" ? "built-in engine" : analysis.source}) — confidence {Math.round((analysis.confidence ?? 0) * 100)}%</p>
             <p className="mt-1">{analysis.reason}</p>
             {analysis.translated_text && analysis.language !== "en" && <p className="mt-1 text-slate-500">Translation for the department: “{analysis.translated_text}”</p>}
@@ -92,10 +92,10 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
             <label className="text-sm font-medium">Department — AI suggests, <b>you confirm</b></label>
             {deptOptions.length === 0 ? <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3 mt-1">No active department covers this ward and category yet. Try another category, or check back later.</p> :
               <div className="space-y-2 mt-2">{deptOptions.map((d: any) => (
-                <label key={d.id} className={`flex items-center gap-3 border rounded-xl p-3 cursor-pointer ${deptId === d.id ? "border-teal-700 bg-teal-50" : ""}`}>
+                <label key={d.id} className={`flex items-center gap-3 border rounded-xl p-3 cursor-pointer ${deptId === d.id ? "border-emerald-700 bg-emerald-50" : ""}`}>
                   <input data-testid="report-department" type="radio" name="dept" checked={deptId === d.id} onChange={() => setDeptId(d.id)} />
                   <span className="flex-1"><b>{d.name}</b>{d.reason && <span className="block text-xs text-slate-500">{d.reason}</span>}</span>
-                  {d.confidence != null && <span className="text-xs font-semibold text-teal-800">{Math.round(d.confidence * 100)}% match</span>}
+                  {d.confidence != null && <span className="text-xs font-semibold text-emerald-800">{Math.round(d.confidence * 100)}% match</span>}
                 </label>))}</div>}
           </div>
           <div className="flex gap-3">

@@ -30,9 +30,9 @@ export default function DepartmentForm({ wards, categories, endpoint, submitLabe
         </div>
         <textarea className={`${inputCls} mt-3`} rows={2} placeholder="What does this department do?" value={f.description} onChange={set("description")} /></div>
       <div><h3 className="font-bold mb-2">📍 Wards served *</h3>
-        <div className="flex flex-wrap gap-2">{wards.map((w) => <button type="button" key={w.id} onClick={() => toggle(wardIds, setWardIds, w.id)} className={`px-3 py-1.5 rounded-full text-sm border ${wardIds.includes(w.id) ? "bg-teal-800 text-white border-teal-800" : "bg-white"}`}>{w.name}</button>)}</div></div>
+        <div className="flex flex-wrap gap-2">{wards.map((w) => <button type="button" key={w.id} onClick={() => toggle(wardIds, setWardIds, w.id)} className={`px-3 py-1.5 rounded-full text-sm border ${wardIds.includes(w.id) ? "bg-emerald-800 text-white border-emerald-800" : "bg-white"}`}>{w.name}</button>)}</div></div>
       <div><h3 className="font-bold mb-2">📂 Categories handled *</h3>
-        <div className="flex flex-wrap gap-2">{categories.map((c) => <button type="button" key={c.id} onClick={() => toggle(catIds, setCatIds, c.id)} className={`px-3 py-1.5 rounded-full text-sm border ${catIds.includes(c.id) ? "bg-teal-800 text-white border-teal-800" : "bg-white"}`}>{c.name}</button>)}</div></div>
+        <div className="flex flex-wrap gap-2">{categories.map((c) => <button type="button" key={c.id} onClick={() => toggle(catIds, setCatIds, c.id)} className={`px-3 py-1.5 rounded-full text-sm border ${catIds.includes(c.id) ? "bg-emerald-800 text-white border-emerald-800" : "bg-white"}`}>{c.name}</button>)}</div></div>
       <div><h3 className="font-bold mb-2">👤 First officer</h3>
         <div className="grid sm:grid-cols-3 gap-3">
           <input className={inputCls} required placeholder="Officer name *" value={f.officer_name} onChange={set("officer_name")} />

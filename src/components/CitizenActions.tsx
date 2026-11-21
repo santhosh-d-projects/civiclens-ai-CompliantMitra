@@ -19,7 +19,7 @@ export default function CitizenActions({ id, status }: { id: string; status: str
         <button className={btnGhost} onClick={feedback}>Submit rating</button>
         <button className={btnGhost} onClick={reopen}>↩ Reopen complaint</button>
       </>}
-      {msg && <span className="text-sm text-teal-800">{msg}</span>}
+      {msg && <span className="text-sm text-emerald-800">{msg}</span>}
     </div>
   );
 }
