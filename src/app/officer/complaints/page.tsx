@@ -5,7 +5,7 @@ export default async function OfficerComplaints({ searchParams }: { searchParams
   const sp = await searchParams;
   const { dept } = await activeOfficerOrBlocked();
   return (
-    <div className="bg-white rounded-2xl shadow p-6">
+    <div className="glass rounded-2xl p-6">
       <h2 className="text-xl font-bold mb-4">My department's complaints</h2>
       <form className="flex flex-wrap gap-2 mb-4" method="get">
         <input name="q" defaultValue={sp.q ?? ""} placeholder="Search title or ticket no" className="border rounded-xl p-2.5 text-sm flex-1 min-w-[180px]" />

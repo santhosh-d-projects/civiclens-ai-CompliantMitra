@@ -23,7 +23,7 @@ export default async function Blocked() {
     transfers = data ?? [];
   }
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow p-8 text-center">
+    <div className="max-w-2xl mx-auto glass rounded-2xl p-8 text-center">
       <div className="text-6xl mb-3">{copy.icon}</div>
       <h2 className="text-2xl font-bold">{copy.title}</h2>
       {dept && <p className="text-slate-500 mt-1">{dept.name}{dept.status_reason ? ` — Reason: ${dept.status_reason}` : ""}</p>}

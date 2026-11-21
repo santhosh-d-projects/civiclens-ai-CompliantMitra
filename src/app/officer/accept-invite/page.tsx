@@ -26,5 +26,5 @@ function Form() {
   );
 }
 export default function AcceptInvite() {
-  return <main className="min-h-screen flex items-center justify-center px-4"><div className="bg-white rounded-2xl shadow p-8 w-full max-w-md"><Suspense><Form /></Suspense></div></main>;
+  return <main className="min-h-screen flex items-center justify-center px-4"><div className="glass rounded-2xl p-8 w-full max-w-md"><Suspense><Form /></Suspense></div></main>;
 }

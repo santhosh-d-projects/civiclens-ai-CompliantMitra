@@ -39,3 +39,6 @@ Created Vercel project complaint-sathi, set 8 env vars, pushed the repo to GitHu
 
 ## Entry 15 — 2026-11-21 12:21 IST — User prompt (v2 master prompt + Firebase decision)
 User pasted the v2 master prompt (adds STEP 0: Firebase phone-OTP as P0) and asked whether it can be added without stopping current work. Her decision: change to Firebase EMAIL verification, as an OPTION only — new citizens register with email + password + confirm password; the decided email+password login flow must not be disturbed. Implemented exactly that: /register page (Supabase sign-up), env-gated Firebase verification checkbox in src/lib/firebase.ts, login flow untouched, decision recorded as D7.
+
+## Entry 16 — 2026-11-21 12:51 IST — User prompt (redesign + duplicate + resolution)
+User uploaded a Stitch glass redesign zip and asked for a complete glassmorphism UI/UX redesign (indigo/violet/midnight navy + teal, Inter/Manrope-class typography) without changing business logic, plus: exact-duplicate complaints must be rejected with an error and no new ID, and the resolution workflow (staff resolution note + after-work photo + status) must be visible to citizens. Implemented: glass design tokens across all portals, 409 duplicate guard, resolution photo requirement + citizen-facing resolution gallery. All flows re-tested locally before redeploy.

@@ -12,8 +12,8 @@ export default async function OfficerDashboard({ searchParams }: { searchParams:
   const tiles = [["🧾 Total", rows.length], ["📬 Open", open.length], ["🔴 Critical open", open.filter((c: any) => c.severity === "critical").length], ["🟠 High open", open.filter((c: any) => c.severity === "high").length], ["✅ Resolved", rows.filter((c: any) => c.status === "resolved").length]];
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">{tiles.map(([l, v]) => <div key={l as string} className="bg-white rounded-2xl shadow p-4"><div className="text-2xl font-bold">{v as number}</div><div className="text-sm text-slate-500">{l as string}</div></div>)}</div>
-      <div className="bg-white rounded-2xl shadow p-6">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">{tiles.map(([l, v]) => <div key={l as string} className="glass rounded-2xl p-4"><div className="text-2xl font-bold">{v as number}</div><div className="text-sm text-slate-500">{l as string}</div></div>)}</div>
+      <div className="glass rounded-2xl p-6">
         <h3 className="font-bold mb-2">⚡ Priority queue — highest severity first</h3>
         <OfficerQueue departmentId={dept.id} searchParams={sp} />
       </div>

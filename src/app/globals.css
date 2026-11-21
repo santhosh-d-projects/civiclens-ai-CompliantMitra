@@ -1,4 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #f1f5f9; color: #0b1c30; }
+
+:root { --ink: #111B45; }
+body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: var(--ink); background: #F4F5FF; min-height: 100vh; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(620px 420px at 10% -5%, rgba(99,102,241,.20), transparent 60%),
+    radial-gradient(720px 520px at 90% 0%, rgba(124,58,237,.15), transparent 60%),
+    radial-gradient(820px 620px at 50% 112%, rgba(13,148,136,.12), transparent 60%),
+    linear-gradient(180deg, #F4F5FF 0%, #ECEEFF 100%);
+}
+h1, h2, h3, .font-display { font-family: "Plus Jakarta Sans", Inter, ui-sans-serif, sans-serif; letter-spacing: -0.01em; }
+.glass { background: rgba(255,255,255,.84); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(99,102,241,.16); box-shadow: 0 10px 34px rgba(49,46,129,.09); }
+.glass-soft { background: rgba(255,255,255,.62); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(99,102,241,.12); }
+::selection { background: rgba(99,102,241,.28); }
+* { scrollbar-width: thin; scrollbar-color: rgba(99,102,241,.35) transparent; }

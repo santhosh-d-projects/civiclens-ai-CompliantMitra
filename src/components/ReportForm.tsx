@@ -45,14 +45,14 @@ export default function ReportForm({ wards, categories }: { wards: any[]; catego
     setDone(j.complaint);
   }
   if (done) return (
-    <div className="bg-white rounded-2xl shadow p-8 text-center">
+    <div className="glass rounded-2xl p-8 text-center">
       <div className="text-6xl mb-3">✅</div><h2 className="text-2xl font-bold">Complaint submitted</h2>
       <p className="text-slate-500 mt-2">Your ticket number is <b className="text-teal-800 text-xl">{done.ticket_no}</b>. The department you confirmed has received it.</p>
       <Link href={`/citizen/complaints/${done.id}`} className={`${btnPrimary} inline-block mt-6`}>Track my complaint →</Link>
     </div>
   );
   return (
-    <div className="bg-white rounded-2xl shadow p-6">
+    <div className="glass rounded-2xl p-6">
       <div className="flex gap-2 mb-6 text-sm font-medium">
         {["1 · Describe", "2 · AI suggests, you confirm", "3 · Submit"].map((s, i) => (
           <span key={s} className={`px-3 py-1.5 rounded-full ${step === i + 1 ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-500"}`}>{s}</span>))}

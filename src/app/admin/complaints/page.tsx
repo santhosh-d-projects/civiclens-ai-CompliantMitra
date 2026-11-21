@@ -6,7 +6,7 @@ export default async function AdminComplaints() {
   const { data } = await admin.from("complaints").select("*, departments!complaints_department_id_fkey(name), categories!complaints_category_id_fkey(name), wards(name)").order("created_at", { ascending: false }).limit(200);
   const rows = data ?? [];
   return (
-    <div className="bg-white rounded-2xl shadow p-6">
+    <div className="glass rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-1"><h2 className="text-xl font-bold">All complaints</h2><span className="text-xs bg-slate-100 px-2 py-1 rounded-full">Read-only — Admins never assign or route complaints</span></div>
       <p className="text-sm text-slate-500 mb-4">Routing is decided by the citizen, confirming the AI's suggestion. This page is for monitoring only.</p>
       {rows.length === 0 ? <EmptyState icon="🧾" title="No complaints yet" /> : (

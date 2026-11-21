@@ -18,9 +18,9 @@ export default function DepartmentForm({ wards, categories, endpoint, submitLabe
     if (!r.ok) { setMsg(j.error?.message ?? "Submission failed"); return; }
     setDone(true);
   }
-  if (done) return <div className="bg-white rounded-2xl shadow p-8 text-center"><div className="text-5xl mb-2">📨</div><h3 className="text-xl font-bold">Submitted</h3><p className="text-slate-500 mt-2">{doneText}</p></div>;
+  if (done) return <div className="glass rounded-2xl p-8 text-center"><div className="text-5xl mb-2">📨</div><h3 className="text-xl font-bold">Submitted</h3><p className="text-slate-500 mt-2">{doneText}</p></div>;
   return (
-    <form onSubmit={submit} className="bg-white rounded-2xl shadow p-6 space-y-5">
+    <form onSubmit={submit} className="glass rounded-2xl p-6 space-y-5">
       <div><h3 className="font-bold mb-2">🏛️ Department details</h3>
         <div className="grid sm:grid-cols-2 gap-3">
           <input data-testid="dept-name" className={inputCls} required placeholder="Department name *" value={f.name} onChange={set("name")} />

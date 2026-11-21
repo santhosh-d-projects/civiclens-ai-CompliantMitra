@@ -9,3 +9,8 @@
 
 ## D7 — Firebase is an OPTIONAL email-verification add-on, not the auth backbone (2026-11-21, per Vaishnavi)
 The v2 master prompt's STEP 0 (Firebase phone-OTP as the citizen login, replacing the decided flow) was NOT adopted: it would disturb the working email+password login and needs a Firebase project + console setup. Instead: citizens register with email + password + confirm password (Supabase Auth, unchanged), and IF Firebase web config env vars are present, the register page offers an optional "verify my email with Firebase" checkbox that sends a Firebase verification link (Spark plan, free). No config → option hidden, zero change to the main flow.
+
+## D8 — Glass redesign + duplicate & resolution rules (2026-11-21, per Vaishnavi)
+UI: adopted the Stitch "Civic Glass Light" system — Inter + Plus Jakarta Sans, indigo/violet primary, midnight-navy glass headers, frosted-glass cards (.glass token), ambient gradient background. Applied via shared tokens (ui.tsx, globals.css) and layout shells so every portal restyles consistently; no business logic changed.
+Duplicates: an exact duplicate complaint (same citizen, same text after trim/whitespace/case normalisation) is rejected with 409 DUPLICATE_COMPLAINT naming the original ticket; no new complaint ID is generated.
+Resolution: marking a complaint resolved requires a resolution note (DB rule) AND at least one after-work photo (API rule RESOLUTION_PHOTO_REQUIRED). Note + photos are shown to the citizen on the complaint detail page and timeline.

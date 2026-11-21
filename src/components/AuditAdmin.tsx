@@ -36,7 +36,7 @@ export default function AuditAdmin() {
         <button data-testid="audit-reverify" className={btnGhost} disabled={busy} onClick={reverifyChain}>{busy ? "Verifying…" : "🔗 Re-verify whole chain"}</button>
         {chain && <span className={`text-sm font-semibold ${chain.chain_ok ? "text-emerald-700" : "text-red-600"}`}>{chain.chain_ok ? "✅ Chain verified end to end" : `❌ Chain broken at record #${chain.broken_at}`}</span>}
       </div>
-      <div className="bg-white rounded-2xl shadow overflow-x-auto">
+      <div className="glass rounded-2xl overflow-x-auto">
         {rows.length === 0 ? <EmptyState icon="🧾" title="No audit events" /> : (
           <table className="w-full text-sm min-w-[820px]">
             <thead><tr className="text-left text-slate-400 border-b"><th className="p-3">#</th><th>Time (UTC)</th><th>Action</th><th>Actor</th><th>Entity</th><th>Change</th><th>Signed</th></tr></thead>

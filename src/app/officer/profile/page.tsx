@@ -9,7 +9,7 @@ export default async function OfficerProfile() {
     admin.from("department_wards").select("wards(name,zone)").eq("department_id", dept.id),
     admin.from("department_categories").select("categories(name)").eq("department_id", dept.id)]);
   return (
-    <div className="bg-white rounded-2xl shadow p-6 max-w-3xl">
+    <div className="glass rounded-2xl p-6 max-w-3xl">
       <div className="flex items-center gap-3"><h2 className="text-xl font-bold">{dept.name}</h2><Pill text={dept.status} style={DEPT_STATUS_STYLE[dept.status] ?? "bg-slate-100"} /></div>
       <p className="text-slate-500 mt-1">{dept.description}</p>
       <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm mt-5">

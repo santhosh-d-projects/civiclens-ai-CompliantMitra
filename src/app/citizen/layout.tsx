@@ -5,7 +5,7 @@ export default async function CitizenLayout({ children }: { children: React.Reac
   await requirePageRole("citizen");
   return (
     <div className="min-h-screen">
-      <header className="bg-[#17324d] text-white sticky top-0 z-10">
+      <header className="bg-[#111B45]/90 backdrop-blur-md shadow-lg shadow-indigo-950/20 text-white sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
           <Link href="/citizen" className="font-bold text-lg">🛡️ Complaint Sathi</Link>
           <nav className="flex gap-1 text-sm ml-2">

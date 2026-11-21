@@ -9,7 +9,7 @@ export default async function MyComplaints() {
   const { data } = await admin.from("complaints").select("*, departments!complaints_department_id_fkey(name), categories!complaints_category_id_fkey(name), wards(name)").eq("citizen_id", p.id).order("created_at", { ascending: false });
   const rows = data ?? [];
   return (
-    <div className="bg-white rounded-2xl shadow p-6">
+    <div className="glass rounded-2xl p-6">
       <h2 className="text-xl font-bold mb-4">My complaints</h2>
       {rows.length === 0 ? <EmptyState icon="🧾" title="No complaints yet" /> : rows.map((c: any) => (
         <Link key={c.id} href={`/citizen/complaints/${c.id}`} className="flex flex-wrap items-center gap-3 py-3 border-b last:border-0 hover:bg-slate-50 rounded-lg px-2">

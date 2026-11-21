@@ -12,31 +12,31 @@ export default async function Home() {
   } catch {}
   return (
     <main className="min-h-screen">
-      <header className="bg-[#17324d] text-white">
+      <header className="bg-[#111B45]/90 backdrop-blur-md shadow-lg shadow-indigo-950/20 text-white">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
           <span className="text-3xl">🛡️</span>
-          <div className="flex-1"><h1 className="text-2xl font-bold">Complaint Sathi</h1><p className="text-teal-200 text-sm">Bengaluru civic complaints — AI suggests, you confirm.</p></div>
+          <div className="flex-1"><h1 className="text-2xl font-bold">Complaint Sathi</h1><p className="text-indigo-200 text-sm">Bengaluru civic complaints — AI suggests, you confirm.</p></div>
           <nav className="flex gap-2 text-sm">
             <Link className="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20" href="/apply-department">Apply as a Department</Link>
-            <Link className="px-3 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 font-semibold" href="/login">Sign in</Link>
+            <Link className="px-3 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 font-semibold shadow-lg shadow-indigo-900/30" href="/login">Sign in</Link>
           </nav>
         </div>
       </header>
       <section className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 className="text-4xl font-bold leading-tight">Report a civic issue.<br />Get it to the right department, fast.</h2>
+          <h2 className="text-4xl font-bold leading-tight">Report a civic issue.<br /><span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-teal-600 bg-clip-text text-transparent">Get it to the right department, fast.</span></h2>
           <p className="text-slate-600 mt-4 text-lg">Potholes, water leaks, garbage, fallen trees — describe the problem in your own language. Our AI suggests the category, severity and department. <b>You confirm</b> before anything is submitted. Nothing is auto-routed.</p>
           <div className="flex gap-3 mt-6">
-            <Link href="/login" className="bg-teal-800 hover:bg-teal-900 text-white font-semibold px-6 py-3 rounded-xl">📝 Report an issue</Link>
+            <Link href="/login" className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-indigo-600/25">📝 Report an issue</Link>
             <Link href="/apply-department" className="border border-slate-300 hover:bg-white font-medium px-6 py-3 rounded-xl">🏛️ Department onboarding</Link>
           </div>
           <div className="flex gap-6 mt-8 text-center">
-            <div><div className="text-3xl font-bold text-teal-800">{deptCount}</div><div className="text-xs text-slate-500">ACTIVE DEPARTMENTS</div></div>
-            <div><div className="text-3xl font-bold text-teal-800">12</div><div className="text-xs text-slate-500">WARDS COVERED</div></div>
-            <div><div className="text-3xl font-bold text-teal-800">{cats.length}</div><div className="text-xs text-slate-500">ISSUE CATEGORIES</div></div>
+            <div><div className="text-3xl font-bold text-indigo-700">{deptCount}</div><div className="text-xs text-slate-500">ACTIVE DEPARTMENTS</div></div>
+            <div><div className="text-3xl font-bold text-indigo-700">12</div><div className="text-xs text-slate-500">WARDS COVERED</div></div>
+            <div><div className="text-3xl font-bold text-indigo-700">{cats.length}</div><div className="text-xs text-slate-500">ISSUE CATEGORIES</div></div>
           </div>
         </div>
-        <div className="bg-white rounded-2xl shadow p-6">
+        <div className="glass rounded-2xl p-6">
           <h3 className="font-bold mb-3">How it works</h3>
           <ol className="space-y-3 text-[15px]">
             <li>✍️ <b>Describe</b> — free text in English, Kannada, Hindi or any language, with photos.</li>
@@ -44,7 +44,7 @@ export default async function Home() {
             <li>✅ <b>You confirm</b> — change the department if you disagree, then submit.</li>
             <li>📍 <b>Track</b> — follow the ticket timeline until the officer resolves it.</li>
           </ol>
-          <div className="flex flex-wrap gap-1.5 mt-5">{cats.map((c) => <span key={c.slug} className="bg-teal-50 text-teal-900 text-xs px-2 py-1 rounded-full border border-teal-100">{c.name}</span>)}</div>
+          <div className="flex flex-wrap gap-1.5 mt-5">{cats.map((c) => <span key={c.slug} className="bg-indigo-50/80 text-indigo-900 text-xs px-2 py-1 rounded-full border border-indigo-100">{c.name}</span>)}</div>
         </div>
       </section>
       <footer className="text-center text-xs text-slate-400 pb-8">Complaint Sathi — a Prompt to Product prototype by Team CompliantMitra. Demo data is illustrative.</footer>

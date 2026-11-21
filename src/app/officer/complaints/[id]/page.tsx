@@ -15,7 +15,7 @@ export default async function OfficerComplaintDetail({ params }: { params: Promi
   if (c.photo_paths?.length) { const { data: s } = await admin.storage.from("complaint-photos").createSignedUrls(c.photo_paths, 3600); photos = (s ?? []).map((x: any) => x.signedUrl).filter(Boolean); }
   return (
     <div className="grid md:grid-cols-3 gap-6">
-      <div className="md:col-span-2 bg-white rounded-2xl shadow p-6">
+      <div className="md:col-span-2 glass rounded-2xl p-6">
         <div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-bold">{c.ticket_no}</h2><SevBadge sev={c.severity} /><Pill text={c.status} style={STATUS_STYLE[c.status] ?? "bg-slate-100"} /></div>
         <p className="mt-3">{c.description}</p>
         <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm mt-4">
@@ -30,7 +30,7 @@ export default async function OfficerComplaintDetail({ params }: { params: Promi
         <h3 className="font-bold mt-6 mb-2">History</h3>
         <ul className="text-sm space-y-1.5">{(events ?? []).map((e: any) => <li key={e.id} className="text-slate-600">• <span className="capitalize">{e.event.replace(/_/g, " ")}</span> — {new Date(e.created_at).toLocaleString("en-IN")}{e.meta?.note ? ` — ${e.meta.note}` : ""}</li>)}</ul>
       </div>
-      <div className="bg-white rounded-2xl shadow p-6 h-fit"><h3 className="font-bold mb-4">🛠️ Work on this complaint</h3><OfficerUpdate id={c.id} /></div>
+      <div className="glass rounded-2xl p-6 h-fit"><h3 className="font-bold mb-4">🛠️ Work on this complaint</h3><OfficerUpdate id={c.id} /></div>
     </div>
   );
 }

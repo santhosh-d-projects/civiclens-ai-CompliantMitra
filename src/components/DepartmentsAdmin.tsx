@@ -61,7 +61,7 @@ export default function DepartmentsAdmin() {
           <button key={c} onClick={() => setChip(c)} className={`px-3 py-2 rounded-full text-sm ${chip === c ? "bg-[#17324d] text-white" : "bg-slate-100"}`}>{c}</button>))}
         <a href="/admin/departments/new" className="ml-auto bg-teal-800 text-white px-4 py-2 rounded-xl font-medium">+ Create department</a>
       </div>
-      <div className="bg-white rounded-2xl shadow overflow-x-auto">
+      <div className="glass rounded-2xl overflow-x-auto">
         {rows.length === 0 ? <EmptyState icon="🏛️" title="No departments in this view" /> : (
           <table className="w-full text-sm min-w-[820px]">
             <thead><tr className="text-left text-slate-400 border-b"><th className="p-3">Department</th><th>Applicant</th><th>Service area</th><th>Contact</th><th>Submitted</th><th>Source</th><th>Status</th></tr></thead>
@@ -133,7 +133,7 @@ export default function DepartmentsAdmin() {
 
       {suspendOpen && d && (
         <div className="fixed inset-0 z-30 bg-black/50 flex items-center justify-center px-4" onClick={() => setSuspendOpen(false)}>
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-md" onClick={(e) => e.stopPropagation()}>
+          <div className="glass rounded-2xl-xl p-6 w-full max-w-md" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-bold">Suspend {d.name}</h3>
             <p className="text-sm text-slate-500 mt-1">Officers are signed out immediately. If the department has open complaints, choose an ACTIVE department that covers the same wards and categories — the move is atomic.</p>
             <label className="block text-sm font-medium mt-4">Reason *</label>

@@ -30,7 +30,7 @@ export default function Register() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow p-8 w-full max-w-md">
+      <div className="glass rounded-2xl p-8 w-full max-w-md">
         <div className="text-center mb-6"><div className="text-5xl">🛡️</div><h1 className="text-2xl font-bold mt-2">Create your citizen account</h1><p className="text-slate-500 text-sm">Register with your email and a password</p></div>
         <form onSubmit={register} className="space-y-3">
           <input data-testid="register-name" className={inputCls} required placeholder="Full name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
